@@ -9,7 +9,7 @@ start_time = time.time()
 
 channels = ['ch0', 'ch1', 'ch10', 'ch11', 'ch2', 'ch3', 'ch8', 'ch9']
 data_dict = {}
-path_name = '../waveform/'
+path_name = '/eos/project/f/flic2019/Data/XArapuca/run3/'
 
 
 def pkl(dirname):
@@ -42,11 +42,11 @@ def main():
     if result is None:
         print("--- %.2f seconds ---" % (time.time() - start_time))
     else:
-        print(str(result))
+        print('test')
 
     if args.output:
 
-        output = open(str(args.dirname) + '.pkl', 'wb')
+        output = open('myfile.pkl', 'wb')
         pickle.dump(data_dict, output)
         output.close()
 
