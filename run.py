@@ -10,6 +10,7 @@ start_time = time.time()
 binsize = 2024
 data_dict = {}
 path_name = '../waveform/'
+# path_name = '/eos/project/f/flic2019/Data/XArapuca/run3/'
 channels = ['ch0', 'ch1', 'ch10', 'ch11', 'ch2', 'ch3', 'ch8', 'ch9']
 
 
@@ -28,6 +29,7 @@ def pkl(dirname):
 
             arr = s. reshape(Nevent, binsize)
             signal = np.delete(arr, np.s_[0:24], axis=1)
+
             data_dict.update({channels[i]: signal})
             i += 1
             file_list *= 0
