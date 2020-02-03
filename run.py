@@ -7,9 +7,10 @@ import time
 
 start_time = time.time()
 
-channels = ['ch0', 'ch1', 'ch10', 'ch11', 'ch2', 'ch3', 'ch8', 'ch9']
+binsize = 2024
 data_dict = {}
-path_name = '/eos/project/f/flic2019/Data/XArapuca/run3/'
+path_name = '../waveform/'
+channels = ['ch0', 'ch1', 'ch10', 'ch11', 'ch2', 'ch3', 'ch8', 'ch9']
 
 
 def pkl(dirname):
@@ -22,10 +23,10 @@ def pkl(dirname):
             fil = pd.concat([pd.read_csv(item, names=[item[1:]]) for item in file_list], axis=1)
             x = pd.DataFrame(fil).to_numpy()
             s = np.transpose(x)
-            Nevent = int(s.size / 2024)
+            Nevent = int(s.size / binsize)
             print('number of event', Nevent)
 
-            arr = s. reshape(Nevent, 2024)
+            arr = s. reshape(Nevent, binsize)
             signal = np.delete(arr, np.s_[0:24], axis=1)
             data_dict.update({channels[i]: signal})
             i += 1
