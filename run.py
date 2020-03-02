@@ -13,10 +13,10 @@ parser.add_option('-d', '--dataset', help='dataset', dest='dataset')
 
 binsize = 2024
 data_dict = {}
-path_name = '../waveform/XeDoping_Feb2020/'
+path_name = '/home/furkan/data/XeDoping_Feb2020/'
 # path_name = '/eos/project/f/flic2019/Data/XArapuca/run3/'
 # channels = ['ch0', 'ch1', 'ch10', 'ch11', 'ch2', 'ch3', 'ch8', 'ch9']
-channels = ['Ch1', 'Ch10', 'Ch11', 'Ch1', 'Ch2', 'Ch3', 'Ch4', 'Ch5', 'Ch6', 'Ch7', 'Ch8']
+channels = ['Ch1', 'Ch2', 'Ch3', 'Ch4', 'Ch5', 'Ch7']
 
 i = 0
 file_list = []
@@ -49,7 +49,7 @@ for key, value in data_dict.items():
     data = (data_dict[key] - blines)
     data1 = data.mean(axis=0)
     # print(data.max(axis=0))
-    bline_dict.update({key: data1})
+    bline_dict.update({key: data})
 
 with open(options.dataset + '.pkl', 'wb') as fin:
     pickle.dump(bline_dict, fin)
