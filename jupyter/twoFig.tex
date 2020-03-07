@@ -1,0 +1,60 @@
+
+%\documentclass[12pt,a4paper,landscape]{article}
+\documentclass{beamer}
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+
+\usepackage{graphicx}
+\usepackage{tgtermes}
+\usepackage{tikz}
+\usepackage{xcolor}
+\usepackage{lipsum} % for loop
+\usepackage{multicol}
+\usepackage{fancyvrb}
+
+\usepackage{subfigure}
+
+\usepackage{booktabs}
+\usepackage{siunitx}
+\usepackage{adjustbox}
+
+
+
+\usepackage{color, colortbl}
+\definecolor{Gray}{gray}{0.85}
+\definecolor{LightCyan}{rgb}{0.88,1,1}
+\usepackage{newtxtext,newtxmath}
+
+
+\newcommand\elec{\mathrm{e^-}}
+
+
+% --- Footer ---
+%Remove Navigation Bars
+\setbeamertemplate{footline}[frame number]
+% And Symbols
+\setbeamertemplate{navigation symbols}{}
+
+\usepackage{fontawesome} %GITHUB LOGO
+%\title{LPC DM \href{https://github.com/LPC-DM}{\faGithub} }
+\title{nanoAOD v6 2016 }
+%\titlegraphic{\includegraphics[width=1cm]{Logos/OxfordLogoV1.png}}
+\begin{document}%
+  \maketitle
+
+
+
+\foreach \index in {run_filt2020-02-13_18-40-27,run_filt2020-02-13_18-45-23, run_filt2020-02-13_18-48-59, run_filt2020-02-13_19-05-00, run_filt2020-02-13_19-27-47, run_filt2020-02-14_00-34-41, run_filt2020-02-14_07-35-13, run_filt2020-02-14_10-14-28, run_filt2020-02-14_10-29-47, run_filt2020-02-14_11-35-10, run_filt2020-02-14_12-11-55, run_filt2020-02-14_12-49-16, run_filt2020-02-14_23-04-44, run_filt2020-02-15_08-01-01, run_filt2020-02-15_12-07-21, run_filt2020-02-15_19-27-13, run_filt2020-02-20_19-23-41, run_filt2020-02-21_14-17-51, run_filt2020-02-21_17-03-34, run_filt2020-02-22_17-12-50, run_filt2020-02-23_16-29-08, run_filt2020-02-23_20-23-44, run_filt2020-02-24_10-52-25, run_filt2020-02-26_17-25-27, run_filt2020-02-26_22-37-37, run_filt2020-02-27_10-16-47, run_filt2020-02-27_15-48-53, run_filt2020-02-27_20-44-12, run_filt2020-02-27_23-53-44, run_filt2020-02-28_08-54-47, run_filt2020-02-28_12-31-10, run_filt2020-02-28_18-28-36, run_filt2020-02-29_15-49-01, run_filt2020-03-02_14-33-42, run_filt2020-03-03_16-19-55, run_filt2020-03-03_22-45-07, run_filt2020-03-05_16-34-38, run_filt2020-03-05_20-40-54, run_filt2020-03-06_11-10-01}
+  {
+    	
+    %\frame{%\frametitle{test}
+      %\begin{figure}[ht]
+         
+          \includegraphics[width=0.2\textwidth]{run_filt/\index.png}
+          \includegraphics[width=0.2\textwidth]{run_filt/log_\index.png}
+
+
+    	%\end{figure}
+    %}
+  }
+\end{document}

@@ -4,6 +4,8 @@ import numpy as np
 import pickle
 import time
 from optparse import OptionParser
+import numpy.ma as ma
+
 start_time = time.time()
 
 
@@ -47,7 +49,11 @@ for key, value in data_dict.items():
     print('nevent', Nevent)
     blines = baseline.reshape(baseline.size, 1)
     data = (data_dict[key] - blines)
-    data1 = data.mean(axis=0)
+
+    satur = ma.masked_greater(data, 14600)
+    sdata = np.ma.compress_rowcols(satur, 0)
+    data = sdata.mean(axis=0)
+    #data1 = data.mean(axis=0)
     # print(data.max(axis=0))
     bline_dict.update({key: data})
 
