@@ -15,7 +15,7 @@ parser.add_option('-d', '--dataset', help='dataset', dest='dataset')
 
 binsize = 2024
 data_dict = {}
-path_name = '/home/furkan/data/XeDoping_Feb2020/'
+path_name = '/eos/project/f/flic2019/Data/ProtoDUNE_SP/XeDoping_Feb2020/'
 # path_name = '/eos/project/f/flic2019/Data/XArapuca/run3/'
 # channels = ['ch0', 'ch1', 'ch10', 'ch11', 'ch2', 'ch3', 'ch8', 'ch9']
 channels = ['Ch1', 'Ch2', 'Ch3', 'Ch4', 'Ch5', 'Ch7']
