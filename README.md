@@ -1,5 +1,6 @@
 #pypuca
-##prerequest
+
+## prerequest
 login to lxplus,  7 is preferable
 
 each time you login
