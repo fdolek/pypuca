@@ -55,7 +55,7 @@ for key, value in data_dict.items():
     data = sdata.mean(axis=0)
     #data1 = data.mean(axis=0)
     # print(data.max(axis=0))
-    bline_dict.update({key: sdata})
+    bline_dict.update({key: data})
 
 with open(options.dataset + '.pkl', 'wb') as fin:
     pickle.dump(bline_dict, fin)

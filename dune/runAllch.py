@@ -16,10 +16,7 @@ parser = OptionParser()
 parser.add_option('-d', '--dataset', help='dataset', dest='dataset')
 (options, args) = parser.parse_args()
 
-#arapuca1 = ['channel_132', 'channel_133', 'channel_134', 'channel_135', 'channel_136', 'channel_137',
-#            'channel_138', 'channel_139', 'channel_140', 'channel_141', 'channel_142', 'channel_143',]
-            # 'channel_264', 'channel_265', 'channel_266', 'channel_267', 'channel_268', 'channel_269',
-            # 'channel_270', 'channel_271', 'channel_272', 'channel_273', 'channel_274', 'channel_275', ]
+# arapuca1 = ['channel_132', 'chan
 
 output = {}
 Nchannel = 288
@@ -33,8 +30,10 @@ def run(runID):
     print('runID:', runID)
     external = uproot.open(runID)['opdigianaExternal']
     # print('test3')
-    arapuca1 = ['channel_132', 'channel_133', 'channel_134', 'channel_135', 'channel_136', 'channel_137',
-                'channel_138', 'channel_139', 'channel_140', 'channel_141', 'channel_142', 'channel_143']
+    arapuca1 = ['channel_132', 'channel_133', 'channel_134',
+                'channel_135', 'channel_136', 'channel_137',
+                'channel_138', 'channel_139', 'channel_140',
+                'channel_141', 'channel_142', 'channel_143']
 
     for xar in arapuca1:
         # print('test4')
