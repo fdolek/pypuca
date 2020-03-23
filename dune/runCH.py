@@ -13,7 +13,7 @@ parser.add_option('-d', '--dataset', help='dataset', dest='dataset')
 
 start_time = time.time()
 
-#path_name = '/home/furkan/work/tpc/'
+# path_name = '/home/furkan/work/tpc/'
 
 binsize = 2000
 output = {}
@@ -41,10 +41,15 @@ def run(xar):
 
 if __name__ == '__main__':
 
-    arapuca1 = ['channel_132', 'channel_133', 'channel_134', 'channel_135', 'channel_136', 'channel_137',
-                'channel_138', 'channel_139', 'channel_140', 'channel_141', 'channel_142', 'channel_143',
-                'channel_264', 'channel_265', 'channel_266', 'channel_267', 'channel_268', 'channel_269',
-                'channel_270', 'channel_271', 'channel_272', 'channel_273', 'channel_274', 'channel_275', ]
+    arapuca1 = ['channel_132', 'channel_133', 'channel_134',
+                'channel_135', 'channel_136', 'channel_137',
+                'channel_138', 'channel_139', 'channel_140',
+                'channel_141', 'channel_142', 'channel_143',
+                'channel_264', 'channel_265', 'channel_266',
+                'channel_267', 'channel_268', 'channel_269',
+                'channel_270', 'channel_271', 'channel_272',
+                'channel_273', 'channel_274', 'channel_275', ]
+
     process = []
 
     for i in arapuca1:
