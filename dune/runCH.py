@@ -13,7 +13,7 @@ parser.add_option('-d', '--dataset', help='dataset', dest='dataset')
 
 start_time = time.time()
 
-# path_name = '/home/furkan/work/tpc/'
+#path_name = '/home/furkan/work/tpc/'
 
 binsize = 2000
 output = {}

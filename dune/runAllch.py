@@ -7,10 +7,8 @@ import cloudpickle
 import numpy as np
 from optparse import OptionParser
 from multiprocessing import Process
-import multiprocessing
 
 start_time = time.time()
-print('test1')
 
 parser = OptionParser()
 parser.add_option('-d', '--dataset', help='dataset', dest='dataset')
@@ -18,10 +16,9 @@ parser.add_option('-d', '--dataset', help='dataset', dest='dataset')
 
 # arapuca1 = ['channel_132', 'chan
 
-output = {}
-Nchannel = 288
 binsize = 2000
-# options.dataset = '/home/furkan/data'
+data_dict = {}
+# path_name = '/home/furkan/data'
 file_list = []
 
 
@@ -48,13 +45,14 @@ def run(runID):
                 vector = external[key].values
                 # print(vector)
                 result_array = np.append(result_array, vector, axis=0)
-            eventDump = result_array.reshape(int(result_array.size / binsize), binsize)
-            output.update({xar: eventDump})
+            eventDump = result_array.reshape(int(result_array.size / binsize),
+                                             binsize)
+            data_dict.update({xar: eventDump})
     outname = re.findall("np04_raw_(.*?)_waveform", format(runID))[0]
-    print(outname)
-    print(output)
-    with gzip.open(outname + '_' + '.pkl.gz', 'wb') as fout:
-        cloudpickle.dump(output, fout)
+    # print(outname)
+    # print(data_dict)
+    with gzip.open(outname + '_' + '.pkl', 'wb') as fout:
+        cloudpickle.dump(data_dict, fout)
     # print('___________________')
     return runID
 
@@ -66,7 +64,9 @@ if __name__ == '__main__':
             print('data set plus filename', options.dataset + '/' + filename)
             file_list.append(options.dataset + '/' + filename)
     print('mylist', file_list)
+
     process = []
+
     for i in file_list:
         proc = Process(target=run, args=(i,))
         process.append(proc)
