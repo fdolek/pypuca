@@ -50,14 +50,44 @@ for key, value in data_dict.items():
     blines = baseline.reshape(baseline.size, 1)
     data = (data_dict[key] - blines)
 
-    satur = ma.masked_greater(data, 14600)
+    satur = ma.masked_greater(data, 14000)
     sdata = np.ma.compress_rowcols(satur, 0)
-    data = sdata.mean(axis=0)
-    #data1 = data.mean(axis=0)
+
+    linreg_array = np.array([])
+    for row in sdata[:, 390:420]:
+        y = row
+        x = np.arange(len(row))
+
+        slope, intercept, r_value, p_value, std_err = stats.linregress(x,y)
+        trend= r_value * p_value
+
+        mask = [trend > 0 ]
+
+        linreg_array = np.append(linreg_array, mask, axis=0)
+        mask_reg1=linreg_array > 0
+
+    linreg_array = np.array([])
+    for row in sdata[:,390:420]:
+        y = row
+        x = np.arange(len(row))
+
+        slope, intercept, r_value, p_value, std_err = stats.linregress(x,y)
+        trend = r_value * p_value
+        mask = [r_value > 0.6 ]
+
+        linreg_array  = np.append(linreg_array , mask, axis=0)
+        mask_reg2 = linreg_array  > 0
+    evtselect=sdata[mask_reg1*mask_reg2]
+    print(evtselect.shape)
+
+    # print(int(sdata.size/2000))
+    data = evtselect.mean(axis=0)
+    # data1 = data.mean(axis=0)
     # print(data.max(axis=0))
     bline_dict.update({key: data})
 
 with open(options.dataset + '.pkl', 'wb') as fin:
     pickle.dump(bline_dict, fin)
+
 
 print("--- %.2f seconds ---" % (time.time() - start_time))
