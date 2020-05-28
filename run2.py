@@ -56,9 +56,11 @@ for key, value in data_dict.items():
     # print(data.max(axis=0))
     bline_dict.update({key: data})
 
-del data_dict
 
+del data_dict
+'''
 select_dict = {}
+
 
 maskflow = np.ones(10000) == True
 #maskflow = np.ones(9973) == True
@@ -87,12 +89,16 @@ for key, value in bline_dict.items():
     corr = (Nevent-Nwave)/10000
     print(Nwave)
     select_dict.update({key:(value[maskflow].mean(axis=0))*corr })
-#    select_dict.update({key: value[maskflow].mean(axis=0)})
-    print(key, value[maskflow].shape)
+    # select_dict.update({key: value[maskflow].mean(axis=0)})
+    
+    
+    # print(key, value[maskflow].shape)
 
 del bline_dict
+'''
 with open(options.dataset + '.pkl.gz', 'wb') as fin:
-    pickle.dump(select_dict, fin)
-    #pickle.dump(data_dict, fin)
+    pickle.dump(bline_dict, fin)	
+    #pickle.dump(select_dict, fin)
+    # pickle.dump(data_dict, fin)
 
 print("--- %.2f seconds ---" % (time.time() - start_time))
