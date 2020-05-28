@@ -83,9 +83,9 @@ for key, value in bline_dict.items():
 
     select_dict.update({key: value[maskflow].mean(axis=0)})
     print(key, value[maskflow].shape)
-del bline_dict
+bline_dict
 with open(options.dataset + '.pkl.gz', 'wb') as fin:
-    pickle.dump(select_dict, fin)
+    pickle.dump(bline_dict, fin)
 
 
 print("--- %.2f seconds ---" % (time.time() - start_time))

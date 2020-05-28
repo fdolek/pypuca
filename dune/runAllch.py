@@ -49,7 +49,7 @@ def run(runID):
                                              binsize)
             data_dict.update({xar: eventDump})
     outname = re.findall("np04_raw_(.*?)_waveform", format(runID))[0]
-    # print(outname)
+    print(outname)
     # print(data_dict)
     with gzip.open(outname + '_' + '.pkl', 'wb') as fout:
         cloudpickle.dump(data_dict, fout)
@@ -61,7 +61,7 @@ if __name__ == '__main__':
 
     for filename in sorted(os.listdir(options.dataset)):
         if '.root' in filename:
-            print('data set plus filename', options.dataset + '/' + filename)
+            #print('data set plus filename', options.dataset + '/' + filename)
             file_list.append(options.dataset + '/' + filename)
     print('mylist', file_list)
 

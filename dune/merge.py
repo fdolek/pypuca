@@ -19,8 +19,10 @@ path_name = '/eos/project/f/flic2019/Data/ProtoDUNE_SP/XeDoping_Feb2020/allArapu
 
 file_list = []
 print('test')
+
 def merge(dirname):
-	for filename in sorted(os.listdir(path_name + dirname)):
+
+  for filename in sorted(os.listdir(path_name + dirname)):
 		if '.pkl.gz' in filename:
 			print(filename)
 	            	print(path_name + dirname + '/' + filename)
