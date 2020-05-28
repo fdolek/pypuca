@@ -88,18 +88,15 @@ for key, value in bline_dict.items():
     print(Nwave)
     select_dict.update({key:(value[maskflow].mean(axis=0))*corr })
 
-<<<<<<< HEAD
     select_dict.update({key: value[maskflow].mean(axis=0)})
     print(key, value[maskflow].shape)
 bline_dict
 with open(options.dataset + '.pkl.gz', 'wb') as fin:
     pickle.dump(bline_dict, fin)
 
-=======
 del bline_dict
 with open(options.dataset + '.pkl.gz', 'wb') as fin:
     pickle.dump(select_dict, fin)
     #pickle.dump(data_dict, fin)
->>>>>>> 58a1627740f0c0b50a74961fd1cd337df2b8da9a
 
 print("--- %.2f seconds ---" % (time.time() - start_time))
