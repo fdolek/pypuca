@@ -16,7 +16,7 @@ parser.add_option('-d', '--dataset', help='dataset', dest='dataset')
 
 binsize = 2024
 data_dict = {}
-path_name = '/eos/project/f/flic2019/Data/ProtoDUNE_SP/XeDoping_Feb2020/'
+path_name = '/eos/project/f/flic2019/Data/ProtoDUNE_SP/XeDoping_Feb2020/data/'
 # path_name = '/eos/project/f/flic2019/Data/XArapuca/run3/'
 # channels = ['ch0', 'ch1', 'ch10', 'ch11', 'ch2', 'ch3', 'ch8', 'ch9']
 channels = ['Ch1', 'Ch2', 'Ch3', 'Ch4', 'Ch5', 'Ch7']
@@ -30,6 +30,7 @@ for filename in sorted(os.listdir(path_name + options.dataset)):
         fil = pd.concat([pd.read_csv(item, names=[item[1:]]) for item in file_list], axis=1)
         x = pd.DataFrame(fil).to_numpy()
         s = np.transpose(x)
+
         Nevent = int(s.size / binsize)
         print('number of event', Nevent)
 
@@ -60,13 +61,14 @@ del data_dict
 select_dict = {}
 
 maskflow = np.ones(10000) == True
-
+#maskflow = np.ones(9973) == True
 # print('test', maskflow.shape)
 print('Event selection')
 for key, value in bline_dict.items():
 
     linreg_array = np.array([])
     for row in value[:, 390:420]:
+    #for row in value[:, 240:270]:
         y = row
         x = np.arange(len(row))
 
@@ -78,14 +80,17 @@ for key, value in bline_dict.items():
         linreg_array = np.append(linreg_array, mask, axis=0)
         mask_reg1 = linreg_array > 0
     maskflow = maskflow & mask_reg1
-
+binADC = 2000
 for key, value in bline_dict.items():
+    #mask1=np.invert(maskflow)
+    Nwave = int(value[maskflow].size / binADC)
+    corr = (Nevent-Nwave)/10000
+    print(Nwave)
+    select_dict.update({key:(value[maskflow].mean(axis=0))*corr })
 
-    select_dict.update({key: value[maskflow].mean(axis=0)})
-    print(key, value[maskflow].shape)
 del bline_dict
 with open(options.dataset + '.pkl.gz', 'wb') as fin:
     pickle.dump(select_dict, fin)
-
+    #pickle.dump(data_dict, fin)
 
 print("--- %.2f seconds ---" % (time.time() - start_time))

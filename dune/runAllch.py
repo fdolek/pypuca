@@ -51,7 +51,7 @@ def run(runID):
     outname = re.findall("np04_raw_(.*?)_waveform", format(runID))[0]
     # print(outname)
     # print(data_dict)
-    with gzip.open(outname + '_' + '.pkl', 'wb') as fout:
+    with gzip.open(outname + '_' + '.pkl.gz', 'wb') as fout:
         cloudpickle.dump(data_dict, fout)
     # print('___________________')
     return runID
@@ -61,9 +61,10 @@ if __name__ == '__main__':
 
     for filename in sorted(os.listdir(options.dataset)):
         if '.root' in filename:
-            print('data set plus filename', options.dataset + '/' + filename)
-            file_list.append(options.dataset + '/' + filename)
-    print('mylist', file_list)
+		#print(filename)	
+            	print('data set plus filename', options.dataset + '/' + filename)
+            	file_list.append(options.dataset + '/' + filename)
+    print('my list  :', file_list)
 
     process = []
 
