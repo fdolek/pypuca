@@ -87,12 +87,8 @@ for key, value in bline_dict.items():
     corr = (Nevent-Nwave)/10000
     print(Nwave)
     select_dict.update({key:(value[maskflow].mean(axis=0))*corr })
-
-    select_dict.update({key: value[maskflow].mean(axis=0)})
+#    select_dict.update({key: value[maskflow].mean(axis=0)})
     print(key, value[maskflow].shape)
-bline_dict
-with open(options.dataset + '.pkl.gz', 'wb') as fin:
-    pickle.dump(bline_dict, fin)
 
 del bline_dict
 with open(options.dataset + '.pkl.gz', 'wb') as fin:

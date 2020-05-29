@@ -61,16 +61,10 @@ if __name__ == '__main__':
 
     for filename in sorted(os.listdir(options.dataset)):
         if '.root' in filename:
-<<<<<<< HEAD
-            #print('data set plus filename', options.dataset + '/' + filename)
-            file_list.append(options.dataset + '/' + filename)
-    print('mylist', file_list)
-=======
 		#print(filename)	
             	print('data set plus filename', options.dataset + '/' + filename)
             	file_list.append(options.dataset + '/' + filename)
     print('my list  :', file_list)
->>>>>>> 58a1627740f0c0b50a74961fd1cd337df2b8da9a
 
     process = []
 
