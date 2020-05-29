@@ -41,7 +41,11 @@ for filename in sorted(os.listdir(path_name + options.dataset)):
         i += 1
         file_list *= 0
 
+<<<<<<< HEAD
 '''
+=======
+
+>>>>>>> 83cd14627bc7ef8bec2b69b09a9a63e612108826
 bline_dict = {}
 
 print('baseline caculation')
@@ -58,6 +62,10 @@ for key, value in data_dict.items():
 
 
 del data_dict
+<<<<<<< HEAD
+=======
+'''
+>>>>>>> 83cd14627bc7ef8bec2b69b09a9a63e612108826
 select_dict = {}
 
 
@@ -96,7 +104,11 @@ for key, value in bline_dict.items():
 del bline_dict
 '''
 with open(options.dataset + '.pkl.gz', 'wb') as fin:
+<<<<<<< HEAD
     pickle.dump(data_dict, fin)	
+=======
+    pickle.dump(bline_dict, fin)	
+>>>>>>> 83cd14627bc7ef8bec2b69b09a9a63e612108826
     #pickle.dump(select_dict, fin)
     # pickle.dump(data_dict, fin)
 
